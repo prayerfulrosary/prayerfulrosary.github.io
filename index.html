@@ -6,15 +6,15 @@
   <meta name="description" content="Prayerful Rosary — pray the Rosary every day with audio, captions, intentions, journals, and 100 daily Catholic motivations." />
   <title>Prayerful Rosary — Pray the Rosary. Every day. With purpose.</title>
 
-  <link rel="preload" href="./marketing-assets/Cinzel-Variable.ttf" as="font" type="font/ttf" crossorigin />
-  <link rel="icon" type="image/png" href="./marketing-assets/app-icon.png" />
+  <link rel="preload" href="https://prayerfulrosary.github.io/marketing-assets/Cinzel-Variable.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="icon" type="image/png" href="https://prayerfulrosary.github.io/marketing-assets/app-icon.png" />
 
   <style>
     /* ------------------------------------------------------------ FONTS */
     @font-face {
       font-family: 'Cinzel';
-      src: url('./marketing-assets/Cinzel-Variable.ttf') format('truetype-variations'),
-           url('./marketing-assets/Cinzel-Variable.ttf') format('truetype');
+      src: url('https://prayerfulrosary.github.io/marketing-assets/Cinzel-Variable.ttf') format('truetype-variations'),
+           url('https://prayerfulrosary.github.io/marketing-assets/Cinzel-Variable.ttf') format('truetype');
       font-weight: 400 900;
       font-style: normal;
       font-display: swap;
@@ -138,7 +138,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: url('./marketing-assets/cathedral.jpg') center/cover no-repeat;
+      background: url('https://prayerfulrosary.github.io/marketing-assets/cathedral.jpg') center/cover no-repeat;
       transform: scale(1.06);
       z-index: -2;
     }
@@ -518,7 +518,7 @@
     }
     .footer-bg {
       position: absolute; inset: 0;
-      background: url('./marketing-assets/cathedral.jpg') center/cover no-repeat;
+      background: url('https://prayerfulrosary.github.io/marketing-assets/cathedral.jpg') center/cover no-repeat;
       transform: scale(1.08);
       filter: brightness(0.95);
       z-index: -2;
@@ -718,7 +718,7 @@
       return html`
         <nav class=${'nav' + (scrolled ? ' scrolled' : '')}>
           <div class="nav-brand">
-            <img src="./marketing-assets/app-icon.png" alt="" />
+            <img src="https://prayerfulrosary.github.io/marketing-assets/app-icon.png" alt="" />
             <span>Prayerful Rosary</span>
           </div>
           <button class="nav-cta" data-tooltip onClick=${(e) => e.preventDefault()}>
@@ -738,7 +738,7 @@
           <div class="hero-overlay"></div>
           <div class="hero-inner">
             <${motion.img}
-              src="./marketing-assets/crucifix.png"
+              src="https://prayerfulrosary.github.io/marketing-assets/crucifix.png"
               alt="Crucifix"
               class="hero-crucifix"
               loading="eager"
@@ -781,25 +781,25 @@
     /* ----------------------------------------------------------------- EXPERIENCE */
     const SCREENS = [
       {
-        src: './marketing-assets/screen1.png',
+        src: 'https://prayerfulrosary.github.io/marketing-assets/screen1.png',
         eyebrow: 'Guided Prayer',
         title: 'Guided Prayer, Step by Step',
         body: "Follow every bead of the Rosary with audio, captions, and full mystery reflections — so your mind never wanders."
       },
       {
-        src: './marketing-assets/screen2.png',
+        src: 'https://prayerfulrosary.github.io/marketing-assets/screen2.png',
         eyebrow: 'Intentions',
         title: 'Your Prayer Journey, Tracked',
         body: "Watch your streak grow. Every Rosary prayed builds a habit that saints were made of."
       },
       {
-        src: './marketing-assets/screen3.png',
+        src: 'https://prayerfulrosary.github.io/marketing-assets/screen3.png',
         eyebrow: 'Reflect',
         title: 'Reflect. Intend. Record.',
         body: "Write prayer intentions and journal reflections tied to each mystery. Your spiritual life, in one place."
       },
       {
-        src: './marketing-assets/screen4.png',
+        src: 'https://prayerfulrosary.github.io/marketing-assets/screen4.png',
         eyebrow: 'Personal',
         title: 'Make It Yours',
         body: "Choose your theme, your background sounds, your pace. The Rosary, the way you pray it best."
@@ -974,7 +974,7 @@
                 exit=${{ opacity: 0, y: -30 }}
                 transition=${{ duration: 0.45, ease }}
               >
-                <img class="notif-icon" src="./marketing-assets/app-icon.png" alt="" />
+                <img class="notif-icon" src="https://prayerfulrosary.github.io/marketing-assets/app-icon.png" alt="" />
                 <div class="notif-body">
                   <div class="notif-row1">
                     <span class="notif-app">Prayerful Rosary</span>
@@ -1036,7 +1036,7 @@
             viewport=${{ once: true, margin: '-100px' }}
             transition=${{ duration: 1.0, ease }}
           >
-            <img class="footer-crucifix" src="./marketing-assets/crucifix.png" alt="" loading="lazy" />
+            <img class="footer-crucifix" src="https://prayerfulrosary.github.io/marketing-assets/crucifix.png" alt="" loading="lazy" />
             <h2 class="footer-heading">Begin your prayer journey today.</h2>
             <p class="footer-sub">Available soon on the App Store.</p>
             <${AppStoreButton} />
