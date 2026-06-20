@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Privacy Policy — Prayerful Rosary</title>
+<meta name="description" content="The Prayerful Rosary privacy policy. The app collects no personal data, makes no network calls, and keeps your prayers, journals, and settings entirely on your device." />
+<meta name="robots" content="index,follow" />
+<meta property="og:title" content="Privacy Policy — Prayerful Rosary" />
+<meta property="og:description" content="No accounts. No tracking. No servers. Everything stays on your device." />
+<meta name="theme-color" content="#08060A" />
+
+<link rel="icon" type="image/png" href="assets/app-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+/* =====  TOKENS  ===== */
+:root {
+  --ink-deep:    #08060A;
+  --ink-warm:    #14100C;
+  --ink-mid:     #1F1811;
+  --ink-soft:    #2A2017;
+  --parchment:   #F0E1C5;
+  --vellum:      #D9C49C;
+  --vellum-dim:  #998566;
+  --gold-leaf:   #C9A24A;
+  --gold-bright: #E8C572;
+  --gold-deep:   #8A6A28;
+  --rose-crimson:#8B1A1A;
+  --rose-petal:  #C24A4A;
+  --silver:      #B8B0A0;
+
+  --serif-display: "Cinzel", "Trajan Pro", "Times New Roman", serif;
+  --serif-italic:  "Cormorant Garamond", "Garamond", serif;
+  --serif-body:    "EB Garamond", "Garamond", "Times New Roman", serif;
+
+  --max:        1240px;
+  --measure:    760px;
+  --gutter:     clamp(20px, 4vw, 56px);
+  --rule:       1px solid rgba(201, 162, 74, 0.32);
+  --rule-dim:   1px solid rgba(201, 162, 74, 0.14);
+}
+
+/* =====  RESET  ===== */
+*,*::before,*::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--serif-body);
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--parchment);
+  background: var(--ink-deep);
+  overflow-x: hidden;
+  font-feature-settings: "liga","kern","onum";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+
+/* =====  ATMOSPHERE  ===== */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%,   rgba(232, 197, 114, 0.10), transparent 60%),
+    radial-gradient(ellipse 60% 60% at 80% 110%, rgba(139, 26, 26, 0.10),  transparent 70%),
+    radial-gradient(ellipse 80% 80% at 10% 90%,  rgba(201, 162, 74, 0.06), transparent 75%);
+  z-index: 0;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.95'/></svg>");
+  z-index: 1;
+}
+
+/* =====  LAYOUT PRIMITIVES  ===== */
+main, header, footer { position: relative; z-index: 2; }
+.wrap { max-width: var(--max); margin: 0 auto; padding-inline: var(--gutter); }
+
+.eyebrow {
+  font-family: var(--serif-display);
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: var(--gold-leaf);
+}
+
+h1,h2,h3 { margin: 0; font-weight: 500; }
+
+/* ornamental section divider — a flourished cross */
+.divider {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 28px;
+  margin: clamp(56px, 8vw, 96px) auto;
+  max-width: 720px;
+  padding-inline: var(--gutter);
+  color: var(--gold-leaf);
+}
+.divider::before,
+.divider::after {
+  content: "";
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor);
+  opacity: 0.5;
+}
+.divider::after { background: linear-gradient(90deg, currentColor, transparent); }
+.divider svg { width: 34px; height: 34px; opacity: 0.85; }
+
+/* =====  NAV  ===== */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  background: rgba(8, 6, 10, 0.55);
+  border-bottom: var(--rule-dim);
+}
+.nav .row {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 76px;
+}
+.brand {
+  display: flex; align-items: center; gap: 14px;
+  font-family: var(--serif-display);
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  font-size: 13px;
+  color: var(--parchment);
+}
+.brand .mark {
+  width: 32px; height: 32px; display: grid; place-items: center;
+  border: 1px solid var(--gold-leaf);
+  border-radius: 50%;
+  color: var(--gold-bright);
+}
+.nav-links {
+  display: flex; align-items: center; gap: 36px;
+  font-family: var(--serif-italic);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--vellum);
+}
+.nav-links a { transition: color 0.4s ease; }
+.nav-links a:hover { color: var(--gold-bright); }
+.cta-pill {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 10px 22px;
+  border: 1px solid var(--gold-leaf);
+  font-family: var(--serif-display);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  transition: background 0.4s ease, color 0.4s ease;
+}
+.cta-pill:hover { background: var(--gold-leaf); color: var(--ink-deep); }
+.nav-links .mobile-hide { display: inline; }
+@media (max-width: 740px) {
+  .nav-links .mobile-hide { display: none; }
+  .nav-links { gap: 18px; font-size: 14px; }
+  .brand { letter-spacing: 0.24em; font-size: 11px; }
+}
+
+/* =====  PAGE HEAD  ===== */
+.page-head {
+  padding-top: clamp(48px, 8vw, 96px);
+  padding-bottom: clamp(8px, 3vw, 28px);
+  text-align: center;
+}
+.page-head .eyebrow {
+  display: inline-flex; align-items: center; gap: 16px;
+  margin-bottom: 26px;
+}
+.page-head .eyebrow::before,
+.page-head .eyebrow::after {
+  content: ""; width: 44px; height: 1px; background: var(--gold-leaf); opacity: 0.6;
+}
+.page-head h1 {
+  font-family: var(--serif-display);
+  font-weight: 900;
+  font-size: clamp(40px, 7vw, 84px);
+  line-height: 0.96;
+  letter-spacing: 0.02em;
+  color: var(--parchment);
+  text-shadow: 0 0 60px rgba(232, 197, 114, 0.16), 0 2px 0 rgba(0,0,0,0.6);
+}
+.page-head .sub {
+  margin: 28px auto 0;
+  max-width: 30ch;
+  font-family: var(--serif-italic);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(19px, 2.2vw, 25px);
+  line-height: 1.45;
+  color: var(--vellum);
+}
+.page-head .stamp {
+  margin-top: 30px;
+  display: inline-flex; flex-wrap: wrap; justify-content: center;
+  gap: 12px 24px;
+  font-family: var(--serif-display);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--vellum-dim);
+}
+.page-head .stamp span { display: inline-flex; align-items: center; gap: 10px; }
+.page-head .stamp span::before { content: "✦"; color: var(--gold-leaf); font-size: 10px; }
+
+/* =====  SUMMARY CARD  ===== */
+.summary {
+  max-width: var(--measure);
+  margin: clamp(32px, 5vw, 56px) auto 0;
+}
+.summary .panel {
+  position: relative;
+  padding: clamp(28px, 4vw, 44px);
+  border: 1px solid rgba(201, 162, 74, 0.3);
+  background:
+    linear-gradient(135deg, rgba(20, 16, 12, 0.9), rgba(8, 6, 10, 0.7)),
+    radial-gradient(ellipse at 0% 0%, rgba(232, 197, 114, 0.16), transparent 55%);
+}
+.summary .panel::before {
+  content: "";
+  position: absolute; inset: 12px;
+  border: 1px solid rgba(201, 162, 74, 0.16);
+  pointer-events: none;
+}
+.summary .kicker {
+  font-family: var(--serif-display);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-bottom: 16px;
+}
+.summary p {
+  margin: 0;
+  font-family: var(--serif-italic);
+  font-style: italic;
+  font-size: clamp(19px, 2vw, 23px);
+  line-height: 1.5;
+  color: var(--parchment);
+}
+.summary ul {
+  margin: 22px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.summary li {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 10px;
+  font-size: 16.5px;
+  line-height: 1.5;
+  color: var(--vellum);
+}
+.summary li svg { width: 18px; height: 18px; margin-top: 5px; color: var(--gold-leaf); }
+.summary li b { color: var(--parchment); font-weight: 600; }
+
+/* =====  LEGAL PROSE  ===== */
+.legal {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding-block: clamp(40px, 6vw, 64px);
+}
+.legal section { margin-top: clamp(40px, 5vw, 60px); }
+.legal section:first-of-type { margin-top: 0; }
+.legal h2 {
+  font-family: var(--serif-display);
+  font-weight: 700;
+  font-size: clamp(22px, 3vw, 30px);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  color: var(--parchment);
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+.legal h2 .no {
+  font-size: 0.62em;
+  letter-spacing: 0.2em;
+  color: var(--gold-leaf);
+  font-weight: 500;
+  flex: none;
+}
+.legal h2 + p { margin-top: 18px; }
+.legal h3 {
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin: 30px 0 10px;
+}
+.legal p { margin: 16px 0; color: var(--vellum); }
+.legal p strong, .legal li strong { color: var(--parchment); font-weight: 600; }
+.legal a.inline {
+  color: var(--gold-bright);
+  border-bottom: 1px solid rgba(201, 162, 74, 0.45);
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+.legal a.inline:hover { color: var(--parchment); border-color: var(--parchment); }
+.legal ul { margin: 16px 0; padding: 0; display: grid; gap: 11px; }
+.legal ul li {
+  list-style: none;
+  position: relative;
+  padding-left: 26px;
+  color: var(--vellum);
+  line-height: 1.6;
+}
+.legal ul li::before {
+  content: "✦";
+  position: absolute; left: 0; top: 1px;
+  color: var(--gold-leaf);
+  font-size: 11px;
+}
+.legal .note {
+  margin-top: 22px;
+  padding: 18px 22px;
+  border-left: 2px solid var(--gold-leaf);
+  background: rgba(20, 16, 12, 0.6);
+  font-family: var(--serif-italic);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--vellum);
+}
+
+/* =====  CONTACT STRIP  ===== */
+.contact {
+  max-width: var(--measure);
+  margin: 0 auto;
+  text-align: center;
+  padding-block: clamp(20px, 4vw, 40px) clamp(40px, 6vw, 64px);
+}
+.contact .ornament {
+  font-family: var(--serif-display);
+  font-size: 16px;
+  letter-spacing: 0.5em;
+  color: var(--gold-leaf);
+  opacity: 0.7;
+  margin-bottom: 22px;
+}
+.contact h2 {
+  font-family: var(--serif-display);
+  font-weight: 700;
+  font-size: clamp(26px, 3.4vw, 38px);
+  letter-spacing: 0.02em;
+  color: var(--parchment);
+}
+.contact p { margin: 16px auto 0; max-width: 44ch; color: var(--vellum); }
+.contact .mail {
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-top: 28px;
+  padding: 16px 28px;
+  border: 1px solid var(--gold-leaf);
+  font-family: var(--serif-display);
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  transition: background 0.4s ease, color 0.4s ease;
+}
+.contact .mail:hover { background: var(--gold-leaf); color: var(--ink-deep); }
+.contact .mail svg { width: 18px; height: 18px; }
+
+/* =====  FOOTER  ===== */
+.foot {
+  border-top: var(--rule-dim);
+  padding-block: 48px 56px;
+  margin-top: 40px;
+}
+.foot .row {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 24px;
+  font-family: var(--serif-display);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--vellum-dim);
+}
+.foot .row a:hover { color: var(--gold-bright); }
+.foot .row .right { display: flex; gap: 32px; flex-wrap: wrap; }
+.foot .row a[aria-current="page"] { color: var(--gold-bright); }
+
+/* =====  REVEAL  ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+
+<body id="top">
+
+<header class="nav">
+  <div class="wrap row">
+    <a href="index.html#top" class="brand" aria-label="Prayerful Rosary home">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M12 4v16M8 8h8" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span>Prayerful Rosary</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#mysteries" class="mobile-hide">Mysteries</a>
+      <a href="index.html#features" class="mobile-hide">Craft</a>
+      <a href="index.html#download" class="cta-pill">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- =====  PAGE HEAD  ===== -->
+  <section class="page-head wrap">
+    <span class="eyebrow">Your Devotion, Yours Alone</span>
+    <h1>Privacy Policy</h1>
+    <p class="sub">No accounts. No tracking. No servers. Your prayers never leave your hands.</p>
+    <div class="stamp">
+      <span>Effective June&nbsp;20,&nbsp;2026</span>
+      <span>Prayerful Rosary for iPhone &amp; iPad</span>
+    </div>
+  </section>
+
+  <!-- =====  SUMMARY  ===== -->
+  <section class="summary wrap">
+    <div class="panel">
+      <div class="kicker">The Short Version</div>
+      <p>Prayerful Rosary is built to be a quiet place. It collects no personal information, makes no network connections, and asks for no account. Everything you do in the app stays on your device.</p>
+      <ul>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><b>We collect nothing.</b> No name, no email, no analytics, no advertising identifiers.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><b>Nothing is sent anywhere.</b> The app has no servers and makes no calls home.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><b>Your data is yours.</b> Intentions, reflections, streaks and settings live only on your device.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><b>No third parties.</b> The app uses only Apple frameworks — no ads, no SDKs, no tracking.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2">
+      <path d="M32 4v56M16 32h32M32 12l-4 6h8zM32 52l-4-6h8z"/>
+      <circle cx="32" cy="32" r="3" fill="currentColor"/>
+    </svg>
+  </div>
+
+  <!-- =====  LEGAL BODY  ===== -->
+  <article class="legal wrap">
+
+    <section class="reveal">
+      <h2><span class="no">I</span> Who We Are</h2>
+      <p>This Privacy Policy explains how the <strong>Prayerful Rosary</strong> application (“the app,” “we,” “us”) handles information. Prayerful Rosary is a meditative rosary-prayer companion for iPhone and iPad, published by Prayerful Rosary and distributed through the Apple App Store.</p>
+      <p>This policy applies to the app itself. It does not cover the Apple App Store or any third-party website you may reach by tapping a link inside the app — those services are governed by their own privacy policies.</p>
+    </section>
+
+    <section class="reveal">
+      <h2><span class="no">II</span> Information We Do Not Collect</h2>
+      <p>Prayerful Rosary does not collect, transmit, sell, or share personal information. We have deliberately built the app without the machinery that would make collection possible. Specifically, we do <strong>not</strong> gather:</p>
+      <ul>
+        <li>Your name, email address, phone number, or any account credentials — the app has no sign-in.</li>
+        <li>Usage analytics, crash telemetry, or behavioral data.</li>
+        <li>Advertising identifiers (IDFA) or any cross-app or cross-site tracking data.</li>
+        <li>Location, contacts, calendars, photos, microphone input, or health data.</li>
+        <li>Any data through third-party advertising or analytics SDKs — the app uses none.</li>
+      </ul>
+      <p>Because the app makes no network requests of its own, there is no server for your information to travel to. Nothing about your prayers is ever uploaded to us.</p>
+    </section>
+
+    <section class="reveal">
+      <h2><span class="no">III</span> Information Stored on Your Device</h2>
+      <p>To remember your place and your practice, the app saves certain information locally, in its own private storage on your device. This data is created by you, kept for you, and never leaves the device by way of the app. It includes:</p>
+      <ul>
+        <li><strong>Prayer intentions</strong> — the petitions you write to carry into a rosary.</li>
+        <li><strong>Reflections</strong> — any thoughts or graces you record after a prayer session.</li>
+        <li><strong>Streak and progress history</strong> — your consecutive days of prayer and the point at which you last paused, so you can resume where you left off.</li>
+        <li><strong>Settings and preferences</strong> — your chosen theme, font size, haptics, audio, and similar options.</li>
+        <li><strong>Audio you add</strong> — any prayer audio files you place into the app for guided playback.</li>
+      </ul>
+      <p class="note">This information is held in your device’s standard app storage. It may be included in your encrypted device backup (for example iCloud Backup or a computer backup) if you have those turned on in iOS — that backup is managed entirely by Apple under your own settings, not by us. The app itself does not use iCloud sync or any cloud database.</p>
+      <p>You are always in control. You can edit or delete intentions and reflections within the app, and deleting the app removes all of its locally stored data from your device.</p>
+    </section>
+
+    <section class="reveal">
+      <h2><span class="no">IV</span> Notifications</h2>
+      <p>The app can show optional local notifications — such as a daily prayer reminder or a daily Scripture quote. These are scheduled and generated entirely on your device; no notification content is sent through us or any outside service.</p>
+      <p>Notifications appear only if you grant permission when iOS asks. You can turn them off at any time in <strong>Settings → Notifications → Prayerful Rosary</strong>, or within the app’s own settings.</p>
+    </section>
+
+    <section class="reveal">
+      <h2><span class="no">V</span> Sharing &amp; External Links</h2>
+      <p>A few features in the app touch the world beyond it, and they only ever do so at your initiative:</p>
+      <ul>
+        <li><strong>The share sheet.</strong> If you choose to share a quote, intention, or reflection card, the app hands it to Apple’s standard iOS share sheet so you can send it where you like. We do not see, store, or receive whatever you share.</li>
+        <li><strong>External links.</strong> Links to our social pages (such as YouTube, Instagram, and Facebook) and to the sources credited for certain prayers and reflections open in your browser or the relevant app. Once you leave Prayerful Rosary, the privacy policy of that destination applies.</li>
+      </ul>
+    </section>
+
+    <section class="reveal">
+      <h2><span class="no">VI</span> The App Store &amp; Apple</h2>
+      <p>Prayerful Rosary is downloaded and updated through the Apple App Store. When you download an app, make a purchase, or interact with the App Store, Apple may collect information under <a class="inline" href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple’s Privacy Policy</a>. That activity is between you and Apple; we do not receive personal information about you from it.</p>
+    </section>
+
+    <section class="reveal">
+      <h2><span class="no">VII</span> Children’s Privacy</h2>
+      <p>Prayerful Rosary is suitable for people of all ages and is safe for children to use. Because the app collects no personal information from anyone, it collects none from children. We do not knowingly gather data from children under 13 (or the equivalent minimum age in your region), and there is no mechanism in the app by which such data could be collected.</p>
+    </section>
+
+    <section class="reveal">
+      <h2><span class="no">VIII</span> Security</h2>
+      <p>The most protective thing an app can do with your data is never to move it. Because your information stays on your device, it is shielded by iOS app sandboxing and your device’s built-in encryption and passcode protections. There is no central database of users to breach, because there is no central database at all.</p>
+    </section>
+
+    <section class="reveal">
+      <h2><span class="no">IX</span> Your Rights</h2>
+      <p>Privacy laws such as Canada’s PIPEDA, the EU/UK GDPR, and California’s CCPA give people rights to access, correct, or delete personal information a company holds about them. We honor the spirit of these laws by the simplest possible means: <strong>we hold no personal information about you to access, correct, sell, or delete.</strong></p>
+      <p>You retain full control of the data stored on your own device — you can view and change it in the app, and remove all of it by deleting the app. If you have any question about your rights, you are welcome to contact us.</p>
+    </section>
+
+    <section class="reveal">
+      <h2><span class="no">X</span> Changes to This Policy</h2>
+      <p>If we update this policy — for example, because the app gains a new feature — we will revise the “Effective” date at the top of this page and post the new version here. If a change is significant, we will make a reasonable effort to note it within the app. Your continued use of the app after an update means you accept the revised policy.</p>
+    </section>
+
+  </article>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2">
+      <circle cx="32" cy="32" r="5" fill="currentColor"/>
+      <path d="M2 32h20M42 32h20M32 2v20M32 42v20"/>
+      <path d="M14 14l6 6M50 14l-6 6M14 50l6-6M50 50l-6-6"/>
+    </svg>
+  </div>
+
+  <!-- =====  CONTACT  ===== -->
+  <section class="contact wrap reveal">
+    <div class="ornament">&#10025; &nbsp; &#8224; &nbsp; &#10025;</div>
+    <h2>Questions about your privacy?</h2>
+    <p>We are glad to answer. Reach out any time and we will respond as promptly as we can.</p>
+    <a class="mail" href="mailto:prayerful.rosary@gmail.com?subject=Privacy%20Policy%20Question">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      prayerful.rosary@gmail.com
+    </a>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap row">
+    <span>&copy; <span id="y"></span> Prayerful Rosary &nbsp;·&nbsp; Made with reverence</span>
+    <span class="right">
+      <a href="privacy.html" aria-current="page">Privacy</a>
+      <a href="mailto:prayerful.rosary@gmail.com?subject=Support">Support</a>
+      <a href="mailto:prayerful.rosary@gmail.com">Contact</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
