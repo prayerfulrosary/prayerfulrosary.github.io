@@ -410,6 +410,79 @@
     .card-2 { grid-column: 8 / span 5; }
     .card-3 { grid-column: 3 / span 8; }
 
+    /* ------------------------------------------------------------ HERO VIDEO + VIGNETTE */
+    .hero-video {
+      position: relative;
+      z-index: 90;            /* lifts the video + its vignette above page content; nav stays above at 100 */
+      max-width: 940px;
+      margin: clamp(44px, 6vw, 84px) auto clamp(48px, 7vw, 96px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* fixed scrim that dims the whole page to spotlight the video; opacity driven by framer */
+    .page-vignette {
+      position: fixed;
+      inset: 0;
+      z-index: 1;             /* inside .hero-video's stacking context: under the video, over the page */
+      pointer-events: none;
+      background: radial-gradient(ellipse 70% 64% at 50% 50%,
+        rgba(8, 5, 3, 0) 0%,
+        rgba(8, 5, 3, 0.20) 42%,
+        rgba(8, 5, 3, 0.62) 72%,
+        rgba(8, 5, 3, 0.88) 100%);
+    }
+    .video-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1600 / 1200;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 40px 90px rgba(0, 0, 0, 0.45), 0 12px 30px rgba(0, 0, 0, 0.22);
+      z-index: 2;             /* above the vignette */
+    }
+    .video-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      border: 1px solid rgba(201, 168, 76, 0.55);
+      box-shadow: inset 0 0 0 6px rgba(245, 237, 216, 0.10);
+      pointer-events: none;
+      z-index: 3;
+    }
+    .video-frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .video-mute {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      z-index: 4;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(20, 12, 4, 0.55);
+      border: 1px solid rgba(245, 237, 216, 0.32);
+      color: var(--cream);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      cursor: pointer;
+      transition: background 200ms ease, transform 200ms ease, border-color 200ms ease;
+    }
+    .video-mute:hover {
+      background: rgba(20, 12, 4, 0.8);
+      border-color: rgba(245, 237, 216, 0.5);
+      transform: translateY(-1px);
+    }
+    .video-mute svg { width: 20px; height: 20px; display: block; }
+
     /* ------------------------------------------------------------ DAILY MOTIVATIONS */
     .motivations {
       position: relative;
@@ -682,6 +755,7 @@
       useScroll,
       useTransform,
       useMotionValueEvent,
+      useInView,
     } from 'framer-motion';
     import htm from 'htm';
 
@@ -697,17 +771,16 @@
     /* ----------------------------------------------------------------- APP STORE BUTTON */
     const AppStoreButton = ({ size = 'lg' }) => {
       return html`
-        <a href="#"
+        <a href="https://apps.apple.com/us/app/prayerful-rosary/id6782238801"
            class="appstore-btn"
-           data-tooltip
-           onClick=${(e) => e.preventDefault()}
-           aria-label="Coming soon to the App Store">
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Download Prayerful Rosary on the App Store">
           <${AppleLogo} />
           <span>
             <span class="as-sub">Download on the</span>
             <span class="as-main">App Store</span>
           </span>
-          <span class="tooltip">Coming soon to the App Store</span>
         </a>
       `;
     };
@@ -728,10 +801,11 @@
             <img src="./marketing-assets/app-icon.png" alt="" />
             <span>Prayerful Rosary</span>
           </div>
-          <button class="nav-cta" data-tooltip onClick=${(e) => e.preventDefault()}>
+          <a class="nav-cta" href="https://apps.apple.com/us/app/prayerful-rosary/id6782238801"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Download Prayerful Rosary on the App Store">
             Download
-            <span class="tooltip">Coming soon to the App Store</span>
-          </button>
+          </a>
         </nav>
       `;
     };
@@ -899,6 +973,81 @@
       `;
     };
 
+    /* ----------------------------------------------------------------- HERO VIDEO + BOUQUET */
+    const MutedIcon = () => html`
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M11 5 6 9H2v6h4l5 4z"/>
+        <line x1="22" y1="9" x2="16" y2="15"/>
+        <line x1="16" y1="9" x2="22" y2="15"/>
+      </svg>
+    `;
+    const SoundIcon = () => html`
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M11 5 6 9H2v6h4l5 4z"/>
+        <path d="M15.5 8.5a5 5 0 0 1 0 7"/>
+        <path d="M19 5a9 9 0 0 1 0 14"/>
+      </svg>
+    `;
+
+    const HeroVideo = () => {
+      const wrapRef = useRef(null);
+      const videoRef = useRef(null);
+      const inView = useInView(wrapRef, { amount: 0.45 });
+      const [muted, setMuted] = useState(true);
+      const ease = [0.22, 1, 0.36, 1];
+
+      // Muted + inline are required for programmatic autoplay (esp. iOS).
+      useEffect(() => {
+        const v = videoRef.current;
+        if (!v) return;
+        v.muted = true;
+        v.playsInline = true;
+      }, []);
+
+      // Auto-play on scroll-in, pause on scroll-out.
+      useEffect(() => {
+        const v = videoRef.current;
+        if (!v) return;
+        if (inView) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+        else { v.pause(); }
+      }, [inView]);
+
+      const toggleMute = () => {
+        const v = videoRef.current;
+        if (!v) return;
+        const next = !v.muted;
+        v.muted = next;
+        setMuted(next);
+        if (!next) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+      };
+
+      return html`
+        <div class="hero-video" ref=${wrapRef}>
+          <${motion.div}
+            class="page-vignette"
+            initial=${{ opacity: 0 }}
+            animate=${{ opacity: inView ? 1 : 0 }}
+            transition=${{ duration: 0.7, ease }}
+            aria-hidden="true"
+          />
+          <div class="video-frame">
+            <video
+              ref=${videoRef}
+              src="./marketing-assets/IP3.mp4"
+              poster="./marketing-assets/cathedral.jpg"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+            <button class="video-mute" onClick=${toggleMute} aria-label=${muted ? 'Unmute video' : 'Mute video'}>
+              ${muted ? MutedIcon() : SoundIcon()}
+            </button>
+          </div>
+        </div>
+      `;
+    };
+
     const Features = () => html`
       <section class="features">
         <div class="features-header">
@@ -906,6 +1055,9 @@
           <h2 class="section-title">A Rosary that meets you where you are.</h2>
           <p class="section-sub">Designed by Catholics, for Catholics — every detail considered, nothing in the way.</p>
         </div>
+
+        <${HeroVideo} />
+
         <div class="features-grid">
           <${FeatureCard}
             index=${0}
@@ -1045,7 +1197,7 @@
           >
             <img class="footer-crucifix" src="./marketing-assets/crucifix.png" alt="" loading="lazy" />
             <h2 class="footer-heading">Begin your prayer journey today.</h2>
-            <p class="footer-sub">Available soon on the App Store.</p>
+            <p class="footer-sub">Now on the App Store.</p>
             <${AppStoreButton} />
             <div class="footer-pulse">${'✦  Prayer Journey: Day 1 starts now  ✦'}</div>
           <//>
@@ -1070,7 +1222,7 @@
               </a>
             `)}
           <//>
-          <div class="footer-copy">© 2026 Prayerful Rosary. All rights reserved. <a href="privacy.html">Privacy Policy</a></div>
+          <div class="footer-copy">© 2026 Prayerful Rosary. All rights reserved. &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a></div>
         </section>
       `;
     };
