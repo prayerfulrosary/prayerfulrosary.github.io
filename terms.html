@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Terms of Use — Prayerful Rosary</title>
+  <meta name="description" content="The Prayerful Rosary Terms of Use, including subscription and payment terms for the optional Premium upgrade. Free to use, with an optional auto-renewing subscription or one-time lifetime purchase billed through Apple." />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:title" content="Terms of Use — Prayerful Rosary" />
+  <meta property="og:description" content="How to use the app, how Premium subscriptions work, and the promises we can and can't make." />
+  <meta name="theme-color" content="#1A0F08" />
+
+  <link rel="preload" href="./marketing-assets/Cinzel-Variable.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="icon" type="image/png" href="./marketing-assets/app-icon.png" />
+
+  <style>
+    /* ------------------------------------------------------------ FONTS */
+    @font-face {
+      font-family: 'Cinzel';
+      src: url('./marketing-assets/Cinzel-Variable.ttf') format('truetype-variations'),
+           url('./marketing-assets/Cinzel-Variable.ttf') format('truetype');
+      font-weight: 400 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ------------------------------------------------------------ TOKENS (shared with index.html) */
+    :root {
+      --cream:           #F5EDD8;
+      --cream-soft:      rgba(245, 237, 216, 0.75);
+      --cream-dim:       rgba(245, 237, 216, 0.6);
+      --cream-faint:     rgba(245, 237, 216, 0.3);
+      --gold:            #C9A84C;
+      --gold-ink:        #9A7B2E; /* darker gold for text/links on light backgrounds */
+      --dark-warm:       #1A0F08;
+      --dark-overlay:    rgba(20, 12, 4, 0.55);
+      --dark-overlay-2:  rgba(20, 12, 4, 0.65);
+      --off-white:       #FAF8F4;
+      --label:           #1C1C1E;
+      --secondary-label: #6B6B6B;
+      --separator:       rgba(0, 0, 0, 0.08);
+      --shadow-card:     0 8px 40px rgba(0, 0, 0, 0.07);
+      --shadow-deep:     0 30px 80px rgba(0, 0, 0, 0.18);
+
+      --font-display: 'Cinzel', Georgia, 'Times New Roman', serif;
+      --font-body:    -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Roboto, sans-serif;
+
+      --measure: 820px;
+    }
+
+    /* ------------------------------------------------------------ RESET */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--label);
+      background: var(--off-white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { margin: 0; font-weight: 600; }
+
+    .wrap { max-width: var(--measure); margin: 0 auto; padding: 0 24px; }
+
+    /* ------------------------------------------------------------ NAV (shared with index.html) */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: 56px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      background: transparent;
+      transition: background 300ms ease, backdrop-filter 300ms ease,
+                  box-shadow 300ms ease, color 300ms ease;
+      color: var(--cream);
+    }
+    .nav.scrolled {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--separator);
+      color: var(--label);
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-display);
+      font-size: 16px;
+      letter-spacing: 0.04em;
+      font-weight: 600;
+    }
+    .nav-brand img {
+      width: 24px; height: 24px; border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+    .nav-cta {
+      position: relative;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      background: #fff;
+      color: var(--label);
+      transition: background 300ms ease, color 300ms ease, transform 200ms ease;
+    }
+    .nav-cta:hover { transform: translateY(-1px); }
+    .nav.scrolled .nav-cta { background: var(--label); color: #fff; }
+
+    .tooltip {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      background: rgba(28, 28, 30, 0.95);
+      color: #fff;
+      font-size: 12px;
+      letter-spacing: 0.02em;
+      padding: 6px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+    [data-tooltip]:hover .tooltip { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ------------------------------------------------------------ PAGE HERO (cathedral, like index.html) */
+    .page-hero {
+      position: relative;
+      min-height: clamp(440px, 72vh, 660px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      color: var(--cream);
+      isolation: isolate;
+      padding: 104px 24px 72px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('./marketing-assets/cathedral.jpg') center/cover no-repeat;
+      transform: scale(1.06);
+      z-index: -2;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 30%, rgba(20,12,4,0.25) 0%, rgba(20,12,4,0.65) 70%, rgba(20,12,4,0.9) 100%),
+        var(--dark-overlay);
+      z-index: -1;
+    }
+    .page-hero-inner { max-width: 760px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 16px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ""; width: 42px; height: 1px; background: var(--gold); opacity: 0.6;
+    }
+    .page-hero-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: 1.0;
+      letter-spacing: 0.03em;
+      color: var(--cream);
+      text-shadow: 0 2px 30px rgba(0,0,0,0.45);
+    }
+    .page-hero-sub {
+      margin: 24px auto 0;
+      max-width: 34ch;
+      font-size: clamp(17px, 1.8vw, 21px);
+      line-height: 1.5;
+      color: var(--cream-soft);
+      letter-spacing: 0.01em;
+    }
+    .hero-stamp {
+      margin-top: 30px;
+      display: inline-flex; flex-wrap: wrap; justify-content: center;
+      gap: 10px 22px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+    }
+    .hero-stamp span { display: inline-flex; align-items: center; gap: 10px; }
+    .hero-stamp span::before { content: "✦"; color: var(--gold); font-size: 9px; }
+
+    /* ------------------------------------------------------------ LEGAL BODY (light) */
+    .legal-body {
+      background: var(--off-white);
+      padding: clamp(64px, 9vw, 104px) 0 clamp(56px, 8vw, 96px);
+    }
+
+    /* summary card — same language as index.html .card */
+    .summary-card {
+      position: relative;
+      background: #fff;
+      border-radius: 20px;
+      padding: clamp(28px, 4vw, 44px);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .summary-card::before {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+    }
+    .summary-kicker {
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold-ink);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .summary-lede {
+      font-size: clamp(18px, 2vw, 21px);
+      line-height: 1.55;
+      color: var(--label);
+      margin: 0;
+    }
+    .summary-list {
+      list-style: none;
+      margin: 24px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 14px;
+    }
+    .summary-list li {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 12px;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--secondary-label);
+    }
+    .summary-list li svg { width: 20px; height: 20px; margin-top: 3px; color: var(--gold); }
+    .summary-list li b { color: var(--label); font-weight: 600; }
+
+    /* ornamental divider */
+    .divider {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 26px;
+      margin: clamp(48px, 7vw, 78px) auto;
+      max-width: 680px;
+      padding: 0 24px;
+      color: var(--gold);
+    }
+    .divider::before, .divider::after {
+      content: "";
+      height: 1px;
+      background: linear-gradient(90deg, transparent, currentColor);
+      opacity: 0.45;
+    }
+    .divider::after { background: linear-gradient(90deg, currentColor, transparent); }
+    .divider svg { width: 30px; height: 30px; opacity: 0.85; }
+
+    /* legal prose */
+    .legal section { margin-top: clamp(44px, 6vw, 64px); }
+    .legal section:first-of-type { margin-top: 0; }
+    .legal h2 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(22px, 3vw, 30px);
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      color: var(--label);
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+    .legal h2 .no {
+      font-size: 0.6em;
+      letter-spacing: 0.18em;
+      color: var(--gold-ink);
+      font-weight: 600;
+      flex: none;
+    }
+    .legal h2 + p { margin-top: 18px; }
+    .legal h3 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-ink);
+      margin: 28px 0 10px;
+    }
+    .legal p {
+      margin: 16px 0;
+      color: var(--secondary-label);
+      font-size: 16.5px;
+      line-height: 1.7;
+    }
+    .legal p strong, .legal li strong { color: var(--label); font-weight: 600; }
+    .legal a.inline {
+      color: var(--gold-ink);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.5);
+      transition: color 0.25s ease, border-color 0.25s ease;
+    }
+    .legal a.inline:hover { color: var(--label); border-color: var(--label); }
+    .legal ul { margin: 16px 0; padding: 0; display: grid; gap: 11px; }
+    .legal ul li {
+      list-style: none;
+      position: relative;
+      padding-left: 26px;
+      color: var(--secondary-label);
+      font-size: 16.5px;
+      line-height: 1.6;
+    }
+    .legal ul li::before {
+      content: "✦";
+      position: absolute; left: 0; top: 2px;
+      color: var(--gold);
+      font-size: 11px;
+    }
+    .legal .note {
+      margin: 22px 0;
+      padding: 18px 22px;
+      border-left: 3px solid var(--gold);
+      background: rgba(201, 168, 76, 0.07);
+      border-radius: 0 12px 12px 0;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--secondary-label);
+    }
+    .legal .note strong { color: var(--label); }
+
+    /* ------------------------------------------------------------ CONTACT (light) */
+    .contact {
+      background: var(--off-white);
+      text-align: center;
+      padding: clamp(8px, 3vw, 24px) 24px clamp(96px, 12vw, 140px);
+    }
+    .contact .inner { max-width: 640px; margin: 0 auto; }
+    .contact-ornament {
+      font-family: var(--font-display);
+      font-size: 15px;
+      letter-spacing: 0.5em;
+      color: var(--gold);
+      opacity: 0.7;
+      margin-bottom: 20px;
+    }
+    .contact h2 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(26px, 3.4vw, 40px);
+      letter-spacing: 0.02em;
+      color: var(--label);
+    }
+    .contact p { margin: 16px auto 0; max-width: 46ch; color: var(--secondary-label); font-size: 17px; line-height: 1.6; }
+    .contact-mail {
+      display: inline-flex; align-items: center; gap: 12px;
+      margin-top: 28px;
+      padding: 14px 26px;
+      border-radius: 999px;
+      background: var(--label);
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+      box-shadow: var(--shadow-card);
+      transition: transform 220ms cubic-bezier(.2,.8,.2,1), box-shadow 220ms ease;
+    }
+    .contact-mail:hover { transform: translateY(-2px); box-shadow: var(--shadow-deep); }
+    .contact-mail svg { width: 18px; height: 18px; }
+
+    /* ------------------------------------------------------------ FOOTER (cathedral, like index.html) */
+    .site-footer {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      color: var(--cream);
+      overflow: hidden;
+      isolation: isolate;
+      padding: clamp(80px, 11vw, 120px) 24px 40px;
+    }
+    .footer-bg {
+      position: absolute; inset: 0;
+      background: url('./marketing-assets/cathedral.jpg') center/cover no-repeat;
+      transform: scale(1.08);
+      filter: brightness(0.95);
+      z-index: -2;
+    }
+    .footer-overlay {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 50%, rgba(20,12,4,0.5) 0%, rgba(20,12,4,0.88) 80%),
+        var(--dark-overlay-2);
+      z-index: -1;
+    }
+    .footer-crucifix {
+      height: 104px;
+      filter: drop-shadow(0 0 32px rgba(245,237,216,0.5));
+    }
+    .footer-wordmark {
+      margin-top: 24px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(22px, 3vw, 30px);
+      letter-spacing: 0.05em;
+      color: var(--cream);
+    }
+    .footer-tag {
+      margin: 12px 0 0;
+      font-size: 16px;
+      color: var(--cream-dim);
+      letter-spacing: 0.01em;
+    }
+    .footer-socials {
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+    }
+    .footer-social-link {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      color: var(--cream);
+      background: rgba(245, 237, 216, 0.06);
+      border: 1px solid rgba(245, 237, 216, 0.18);
+      transition: transform 220ms cubic-bezier(.2,.8,.2,1),
+                  background 220ms ease, border-color 220ms ease, color 220ms ease;
+    }
+    .footer-social-link:hover {
+      transform: translateY(-2px);
+      background: rgba(245, 237, 216, 0.14);
+      border-color: rgba(245, 237, 216, 0.4);
+      color: #fff;
+    }
+    .footer-social-link svg { width: 18px; height: 18px; display: block; }
+    .footer-copy {
+      margin-top: 40px;
+      font-size: 13px;
+      color: var(--cream-faint);
+      letter-spacing: 0.02em;
+    }
+    .footer-copy a {
+      color: var(--cream-dim);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 220ms ease;
+    }
+    .footer-copy a:hover { color: var(--cream); }
+
+    /* ------------------------------------------------------------ REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 1.0s ease, transform 1.0s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ------------------------------------------------------------ RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav { padding: 0 16px; }
+      .page-hero { padding: 96px 20px 56px; }
+      .legal h2 { gap: 10px; }
+    }
+
+    /* ------------------------------------------------------------ MOTION-SAFE */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="nav" id="nav">
+    <a class="nav-brand" href="index.html" aria-label="Prayerful Rosary home">
+      <img src="./marketing-assets/app-icon.png" alt="" />
+      <span>Prayerful Rosary</span>
+    </a>
+    <button class="nav-cta" data-tooltip type="button" aria-label="Coming soon to the App Store">
+      Download
+      <span class="tooltip">Coming soon to the App Store</span>
+    </button>
+  </nav>
+
+  <!-- ===== PAGE HERO ===== -->
+  <header class="page-hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="page-hero-inner">
+      <div class="hero-eyebrow">A Fair &amp; Simple Agreement</div>
+      <h1 class="page-hero-title">Terms of Use</h1>
+      <p class="page-hero-sub">How to use the app, how Premium works, and the promises we can and cannot make.</p>
+      <div class="hero-stamp">
+        <span>Effective June&nbsp;21,&nbsp;2026</span>
+        <span>Prayerful Rosary for iPhone &amp; iPad</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== LEGAL BODY ===== -->
+  <main class="legal-body">
+
+    <!-- summary card -->
+    <section class="wrap reveal">
+      <div class="summary-card">
+        <div class="summary-kicker">The Short Version</div>
+        <p class="summary-lede">Prayerful Rosary is free to download and use, with an optional Premium upgrade. These terms cover how you may use the app, how subscriptions work, and the limits of what the app promises.</p>
+        <ul class="summary-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><b>Free to use, Premium optional.</b> Upgrade via an auto-renewing monthly or yearly subscription, or a one-time lifetime purchase.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><b>Billing is handled by Apple.</b> Subscriptions auto-renew unless cancelled at least 24 hours before the period ends. Manage everything in your Apple Account.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><b>Your writing belongs to you.</b> Journal entries and intentions are stored only on your device.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><b>An independent Catholic app.</b> Made with love and fidelity, but not officially affiliated with the Vatican, the USCCB, or any diocese.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M32 4v56M16 32h32M32 12l-4 6h8zM32 52l-4-6h8z"/>
+        <circle cx="32" cy="32" r="3" fill="currentColor"/>
+      </svg>
+    </div>
+
+    <!-- prose -->
+    <article class="legal wrap">
+
+      <section class="reveal">
+        <h2><span class="no">I</span> Acceptance of These Terms</h2>
+        <p><strong>Prayerful Rosary</strong> is a meditative rosary-prayer companion for iPhone and iPad, published by Prayerful Rosary. These Terms of Use (“Terms”) govern your use of the app and its content. By downloading or using Prayerful Rosary, you agree to these Terms. If you do not agree, please do not use the app.</p>
+      </section>
+
+      <section class="reveal">
+        <h2><span class="no">II</span> License</h2>
+        <p>You are granted a personal, non-transferable, non-commercial license to use Prayerful Rosary for private devotional use on Apple devices that you own or control, in accordance with our <a class="inline" href="eula.html">End User License Agreement</a> and Apple’s standard Licensed Application End User License Agreement.</p>
+      </section>
+
+      <section class="reveal">
+        <h2><span class="no">III</span> Subscriptions &amp; Payments</h2>
+        <p>Prayerful Rosary is free to download and includes an optional Premium upgrade. Premium is offered as an auto-renewing monthly or yearly subscription (which may include a free trial) or as a one-time lifetime purchase.</p>
+        <p class="note">Subscriptions are billed to your Apple Account when you confirm the purchase and renew automatically at the then-current price unless auto-renew is turned off at least 24 hours before the end of the current period. Your account is charged for renewal within 24 hours before the period ends. If a free trial is offered and you do not cancel before it ends, the subscription begins and your account is charged; any unused portion of a free trial is forfeited once you purchase a subscription.</p>
+        <p>You can manage your subscription, change plans, or turn off auto-renew at any time in your Apple Account settings under Subscriptions. The lifetime option is a single payment with no recurring charges. Prices are shown in the app before you buy and may vary by region. All purchases, billing, and refunds are handled by Apple under the App Store Terms of Service; we are unable to process refunds directly.</p>
+      </section>
+
+      <section class="reveal">
+        <h2><span class="no">IV</span> Devotional Content</h2>
+        <p>Prayerful Rosary is an independent Catholic app and is not officially affiliated with or endorsed by the Vatican, the USCCB, or any diocese. The prayers, meditations, and liturgical information in the app are provided for personal prayer and devotion. While we strive for fidelity to approved Catholic sources, the app is not an official liturgical text.</p>
+      </section>
+
+      <section class="reveal">
+        <h2><span class="no">V</span> Not Professional Counsel</h2>
+        <p>The app’s content is spiritual in nature and is not a substitute for pastoral care, professional counseling, or medical or mental-health treatment. If you are in crisis, please seek help from a qualified professional.</p>
+      </section>
+
+      <section class="reveal">
+        <h2><span class="no">VI</span> Intellectual Property</h2>
+        <p>The app’s design, prayer audio recordings, ambient soundscapes, and original content are © 2026 PrayerfulRosary, all rights reserved. Scripture quotations are from the New American Bible, Revised Edition © Confraternity of Christian Doctrine, Washington, D.C. Visual imagery was generated with the assistance of AI (Gemini Pro) and curated for the app. You may not copy, redistribute, resell, or extract the app’s audio or content outside of the app’s built-in sharing features.</p>
+      </section>
+
+      <section class="reveal">
+        <h2><span class="no">VII</span> Your Content</h2>
+        <p>Journal entries and prayer intentions you create belong to you and are stored only on your device. You are responsible for any content you choose to share outside the app using the share features.</p>
+      </section>
+
+      <section class="reveal">
+        <h2><span class="no">VIII</span> Acceptable Use</h2>
+        <p>You agree not to misuse the app, interfere with its operation, or attempt to reverse engineer, decompile, or modify it except as permitted by applicable law.</p>
+      </section>
+
+      <section class="reveal">
+        <h2><span class="no">IX</span> Provided “As Is”</h2>
+        <p>Prayerful Rosary is provided “as is” and “as available,” without warranties of any kind, express or implied. Features may change, be interrupted, or be discontinued at any time.</p>
+      </section>
+
+      <section class="reveal">
+        <h2><span class="no">X</span> Limitation of Liability</h2>
+        <p>To the maximum extent permitted by law, PrayerfulRosary shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of, or inability to use, the app.</p>
+      </section>
+
+      <section class="reveal">
+        <h2><span class="no">XI</span> Changes to These Terms</h2>
+        <p>These terms may be updated from time to time. The current version will always be available here, and within the app, with a revised effective date. Continued use of the app after changes means you accept the updated terms.</p>
+      </section>
+
+      <section class="reveal">
+        <h2><span class="no">XII</span> Contact</h2>
+        <p>If you have any questions about these terms, you can reach the developer any time using the details below, or through the app’s App Store page.</p>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact reveal">
+    <div class="inner">
+      <div class="contact-ornament">&#10025; &nbsp; &#8224; &nbsp; &#10025;</div>
+      <h2>Questions about these terms?</h2>
+      <p>We are glad to answer. Reach out any time and we will respond as promptly as we can.</p>
+      <a class="contact-mail" href="mailto:prayerful.rosary@gmail.com?subject=Terms%20of%20Use%20Question">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        prayerful.rosary@gmail.com
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-bg"></div>
+    <div class="footer-overlay"></div>
+    <img class="footer-crucifix" src="./marketing-assets/crucifix.png" alt="" loading="lazy" />
+    <div class="footer-wordmark">Prayerful Rosary</div>
+    <p class="footer-tag">Pray the Rosary. Every day. With purpose.</p>
+    <div class="footer-socials">
+      <a class="footer-social-link" href="https://youtube.com/@PRAYERFULROSARY" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
+        </svg>
+      </a>
+      <a class="footer-social-link" href="https://www.instagram.com/prayerfulrosary" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5" ry="5"/>
+          <path d="M16 11.4A4 4 0 1 1 12.6 8a4 4 0 0 1 3.4 3.4z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+      </a>
+      <a class="footer-social-link" href="https://www.facebook.com/prayerfulrosary" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.5 2.9h-2.3v7A10 10 0 0 0 22 12z"/>
+        </svg>
+      </a>
+    </div>
+    <div class="footer-copy">© <span id="y"></span> Prayerful Rosary. All rights reserved. &nbsp;·&nbsp; <a href="index.html">Home</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="eula.html">EULA</a></div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Nav: transparent over the hero, solid once the hero scrolls past — same as index.html.
+    const nav = document.getElementById('nav');
+    const hero = document.querySelector('.page-hero');
+    const onScroll = () => {
+      const threshold = hero ? hero.offsetHeight - 72 : 400;
+      nav.classList.toggle('scrolled', window.scrollY > threshold);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Reveal sections on scroll.
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  </script>
+
+</body>
+</html>
