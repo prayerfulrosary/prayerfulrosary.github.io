@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Blog — Prayerful Rosary | Catholic Prayer, the Rosary &amp; Devotion</title>
+  <meta name="description" content="Reflections, guides, and history from Prayerful Rosary — how to build a daily Rosary habit, the 20 mysteries explained, praying for healing, and the story of the Rosary from Saint Dominic to your smartphone." />
+  <meta name="keywords" content="rosary blog, catholic prayer blog, how to pray the rosary, mysteries of the rosary, daily rosary habit, prayerful rosary app" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://prayerfulrosary.github.io/blog.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Prayerful Rosary" />
+  <meta property="og:title" content="The Prayerful Rosary Blog" />
+  <meta property="og:description" content="Reflections, guides, and history to help you pray the Rosary every day — with purpose." />
+  <meta property="og:url" content="https://prayerfulrosary.github.io/blog.html" />
+  <meta property="og:image" content="https://prayerfulrosary.github.io/marketing-assets/cathedral.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Prayerful Rosary Blog" />
+  <meta name="twitter:description" content="Reflections, guides, and history to help you pray the Rosary every day — with purpose." />
+  <meta name="twitter:image" content="https://prayerfulrosary.github.io/marketing-assets/cathedral.jpg" />
+  <meta name="theme-color" content="#1A0F08" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Prayerful Rosary Blog",
+    "description": "Reflections, guides, and history to help Catholics pray the Rosary every day with purpose.",
+    "url": "https://prayerfulrosary.github.io/blog.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Prayerful Rosary",
+      "logo": { "@type": "ImageObject", "url": "https://prayerfulrosary.github.io/marketing-assets/app-icon.png" }
+    }
+  }
+  </script>
+
+  <link rel="preload" href="./marketing-assets/Cinzel-Variable.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="icon" type="image/png" href="./marketing-assets/app-icon.png" />
+
+  <style>
+    @font-face {
+      font-family: 'Cinzel';
+      src: url('./marketing-assets/Cinzel-Variable.ttf') format('truetype-variations'),
+           url('./marketing-assets/Cinzel-Variable.ttf') format('truetype');
+      font-weight: 400 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --cream:           #F5EDD8;
+      --cream-soft:      rgba(245, 237, 216, 0.75);
+      --cream-dim:       rgba(245, 237, 216, 0.6);
+      --cream-faint:     rgba(245, 237, 216, 0.3);
+      --gold:            #C9A84C;
+      --gold-ink:        #9A7B2E;
+      --dark-warm:       #1A0F08;
+      --dark-overlay:    rgba(20, 12, 4, 0.55);
+      --dark-overlay-2:  rgba(20, 12, 4, 0.65);
+      --off-white:       #FAF8F4;
+      --label:           #1C1C1E;
+      --secondary-label: #6B6B6B;
+      --separator:       rgba(0, 0, 0, 0.08);
+      --shadow-card:     0 8px 40px rgba(0, 0, 0, 0.07);
+      --shadow-deep:     0 30px 80px rgba(0, 0, 0, 0.18);
+      --font-display: 'Cinzel', Georgia, 'Times New Roman', serif;
+      --font-body:    -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Roboto, sans-serif;
+      --measure: 1100px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--label);
+      background: var(--off-white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { margin: 0; font-weight: 600; }
+    .wrap { max-width: var(--measure); margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- NAV ---------- */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: 56px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      background: transparent;
+      transition: background 300ms ease, backdrop-filter 300ms ease, box-shadow 300ms ease, color 300ms ease;
+      color: var(--cream);
+    }
+    .nav.scrolled {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--separator);
+      color: var(--label);
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-display);
+      font-size: 16px; letter-spacing: 0.04em; font-weight: 600;
+    }
+    .nav-brand img { width: 24px; height: 24px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-link { font-size: 14px; font-weight: 500; letter-spacing: 0.02em; opacity: 0.82; transition: opacity 200ms ease; }
+    .nav-link:hover { opacity: 1; }
+    .nav-link.active { opacity: 1; border-bottom: 1.5px solid var(--gold); padding-bottom: 2px; }
+    .nav-cta {
+      padding: 8px 16px; border-radius: 999px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.01em;
+      background: #fff; color: var(--label);
+      transition: background 300ms ease, color 300ms ease, transform 200ms ease;
+    }
+    .nav-cta:hover { transform: translateY(-1px); }
+    .nav.scrolled .nav-cta { background: var(--label); color: #fff; }
+
+    /* ---------- PAGE HERO ---------- */
+    .page-hero {
+      position: relative;
+      min-height: clamp(380px, 56vh, 520px);
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden;
+      color: var(--cream); isolation: isolate;
+      padding: 120px 24px 72px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('./marketing-assets/cathedral.jpg') center/cover no-repeat;
+      transform: scale(1.06); z-index: -2;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 30%, rgba(20,12,4,0.25) 0%, rgba(20,12,4,0.65) 70%, rgba(20,12,4,0.9) 100%),
+        var(--dark-overlay);
+      z-index: -1;
+    }
+    .page-hero-inner { max-width: 760px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 16px;
+      font-family: var(--font-display);
+      font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 24px;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after { content: ""; width: 42px; height: 1px; background: var(--gold); opacity: 0.6; }
+    .page-hero-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(40px, 6.4vw, 74px); line-height: 1.02;
+      letter-spacing: 0.03em; color: var(--cream); text-shadow: 0 2px 30px rgba(0,0,0,0.45);
+    }
+    .page-hero-sub {
+      margin: 24px auto 0; max-width: 46ch;
+      font-size: clamp(17px, 1.8vw, 21px); line-height: 1.5;
+      color: var(--cream-soft); letter-spacing: 0.01em;
+    }
+
+    /* ---------- POSTS GRID ---------- */
+    .posts {
+      background: var(--off-white);
+      padding: clamp(56px, 8vw, 96px) 0 clamp(72px, 10vw, 120px);
+    }
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 28px;
+    }
+    .post-card {
+      position: relative;
+      display: flex; flex-direction: column;
+      background: #fff; border-radius: 20px;
+      padding: 34px 32px 30px;
+      box-shadow: var(--shadow-card);
+      overflow: hidden; isolation: isolate;
+      transition: transform 260ms cubic-bezier(.2,.8,.2,1), box-shadow 260ms ease;
+    }
+    .post-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); }
+    .post-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-deep); }
+    .post-cat {
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold-ink); font-weight: 700; margin-bottom: 16px;
+    }
+    .post-card h2 {
+      font-family: var(--font-display); font-size: 24px; line-height: 1.25;
+      letter-spacing: 0.01em; color: var(--label); margin-bottom: 14px;
+    }
+    .post-card p { color: var(--secondary-label); font-size: 15.5px; line-height: 1.62; margin: 0 0 22px; }
+    .post-meta {
+      margin-top: auto;
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; color: var(--secondary-label); letter-spacing: 0.02em;
+    }
+    .post-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--gold); }
+    .post-readmore {
+      margin-top: 18px;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 14px; font-weight: 600; color: var(--gold-ink);
+      transition: gap 220ms ease;
+    }
+    .post-card:hover .post-readmore { gap: 13px; }
+    .post-readmore svg { width: 16px; height: 16px; }
+
+    /* ---------- CTA STRIP ---------- */
+    .cta-strip {
+      position: relative; text-align: center;
+      color: var(--cream); overflow: hidden; isolation: isolate;
+      padding: clamp(72px, 10vw, 120px) 24px;
+    }
+    .cta-strip .footer-bg {
+      position: absolute; inset: 0;
+      background: url('./marketing-assets/cathedral.jpg') center/cover no-repeat;
+      transform: scale(1.08); z-index: -2;
+    }
+    .cta-strip .footer-overlay {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(20,12,4,0.55) 0%, rgba(20,12,4,0.9) 80%), var(--dark-overlay-2);
+      z-index: -1;
+    }
+    .cta-strip h2 {
+      font-family: var(--font-display); font-size: clamp(30px, 4vw, 48px);
+      letter-spacing: 0.02em; color: var(--cream); line-height: 1.12;
+    }
+    .cta-strip p { color: var(--cream-dim); font-size: 18px; margin: 16px 0 32px; }
+    .appstore-btn {
+      position: relative; display: inline-flex; align-items: center; gap: 12px;
+      padding: 14px 26px; border-radius: 999px; background: #fff; color: #000;
+      font-weight: 600; letter-spacing: 0.01em;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25), 0 2px 6px rgba(0,0,0,0.15);
+      transition: transform 220ms cubic-bezier(.2,.8,.2,1), box-shadow 220ms ease;
+    }
+    .appstore-btn:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(0,0,0,0.32); }
+    .appstore-btn svg { width: 22px; height: 22px; }
+    .appstore-btn .as-sub { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; line-height: 1; }
+    .appstore-btn .as-main { font-size: 17px; font-weight: 600; line-height: 1.2; margin-top: 2px; }
+
+    /* ---------- FOOTER ---------- */
+    .site-footer {
+      position: relative; display: flex; flex-direction: column;
+      align-items: center; text-align: center; color: var(--cream);
+      overflow: hidden; isolation: isolate;
+      padding: clamp(72px, 10vw, 110px) 24px 40px;
+      background: var(--dark-warm);
+    }
+    .footer-crucifix { height: 96px; filter: drop-shadow(0 0 32px rgba(245,237,216,0.5)); }
+    .footer-wordmark {
+      margin-top: 24px; font-family: var(--font-display); font-weight: 600;
+      font-size: clamp(22px, 3vw, 30px); letter-spacing: 0.05em; color: var(--cream);
+    }
+    .footer-tag { margin: 12px 0 0; font-size: 16px; color: var(--cream-dim); }
+    .footer-socials { margin-top: 32px; display: flex; align-items: center; justify-content: center; gap: 22px; }
+    .footer-social-link {
+      display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%;
+      color: var(--cream); background: rgba(245, 237, 216, 0.06); border: 1px solid rgba(245, 237, 216, 0.18);
+      transition: transform 220ms cubic-bezier(.2,.8,.2,1), background 220ms ease, border-color 220ms ease, color 220ms ease;
+    }
+    .footer-social-link:hover { transform: translateY(-2px); background: rgba(245, 237, 216, 0.14); border-color: rgba(245, 237, 216, 0.4); color: #fff; }
+    .footer-social-link svg { width: 18px; height: 18px; display: block; }
+    .footer-copy { margin-top: 40px; font-size: 13px; color: var(--cream-faint); letter-spacing: 0.02em; }
+    .footer-copy a { color: var(--cream-dim); text-decoration: underline; text-underline-offset: 2px; transition: color 220ms ease; }
+    .footer-copy a:hover { color: var(--cream); }
+
+    /* ---------- REVEAL ---------- */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 1s ease, transform 1s cubic-bezier(0.2,0.8,0.2,1); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media (max-width: 768px) {
+      .nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .page-hero { padding: 104px 20px 56px; }
+      .posts-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 420px) {
+      .nav-brand span { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="nav" id="nav">
+    <a class="nav-brand" href="index.html" aria-label="Prayerful Rosary home">
+      <img src="./marketing-assets/app-icon.png" alt="" />
+      <span>Prayerful Rosary</span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link active" href="blog.html" aria-current="page">Blog</a>
+      <a class="nav-cta" href="https://apps.apple.com/us/app/prayerful-rosary/id6782238801" target="_blank" rel="noopener noreferrer" aria-label="Download Prayerful Rosary on the App Store">Download</a>
+    </div>
+  </nav>
+
+  <!-- ===== PAGE HERO ===== -->
+  <header class="page-hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="page-hero-inner">
+      <div class="hero-eyebrow">Reflections &amp; Guides</div>
+      <h1 class="page-hero-title">The Prayerful Rosary Blog</h1>
+      <p class="page-hero-sub">Guides, reflections, and history to help you pray the Rosary every day — with purpose.</p>
+    </div>
+  </header>
+
+  <!-- ===== POSTS ===== -->
+  <main class="posts">
+    <div class="wrap">
+      <div class="posts-grid">
+
+        <a class="post-card reveal" href="how-to-build-daily-rosary-habit-iphone.html">
+          <div class="post-cat">Prayer Habits</div>
+          <h2>How to Build a Daily Rosary Habit Using Your iPhone</h2>
+          <p>Turn your iPhone from a source of distraction into an instrument of grace. A practical guide to building a sustainable, lifelong daily Rosary habit.</p>
+          <div class="post-meta"><span>June 2, 2026</span><span class="dot"></span><span>6 min read</span></div>
+          <span class="post-readmore">Read article
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+
+        <a class="post-card reveal" href="20-mysteries-of-the-rosary-explained-beginners.html">
+          <div class="post-cat">Learn the Rosary</div>
+          <h2>The 20 Mysteries of the Rosary Explained for Beginners</h2>
+          <p>The Joyful, Luminous, Sorrowful, and Glorious mysteries — what each one means, when to pray it, and how to meditate as a beginner.</p>
+          <div class="post-meta"><span>June 9, 2026</span><span class="dot"></span><span>8 min read</span></div>
+          <span class="post-readmore">Read article
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+
+        <a class="post-card reveal" href="why-catholics-turning-to-prayer-apps.html">
+          <div class="post-cat">Faith &amp; Technology</div>
+          <h2>Why Catholics Are Turning to Prayer Apps for Deeper Devotion</h2>
+          <p>A quiet counter-cultural movement is reclaiming our digital spaces. Here's why prayer apps have become essential to modern Catholic life.</p>
+          <div class="post-meta"><span>June 16, 2026</span><span class="dot"></span><span>6 min read</span></div>
+          <span class="post-readmore">Read article
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+
+        <a class="post-card reveal" href="praying-the-rosary-for-healing-healthcare-workers.html">
+          <div class="post-cat">Prayer &amp; Healing</div>
+          <h2>Praying the Rosary for Healing: A Guide for Healthcare Workers</h2>
+          <p>For nurses, physicians, and caregivers — finding spiritual renewal, fighting burnout, and interceding for patients with Mary, Health of the Sick.</p>
+          <div class="post-meta"><span>June 23, 2026</span><span class="dot"></span><span>7 min read</span></div>
+          <span class="post-readmore">Read article
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+
+        <a class="post-card reveal" href="history-of-the-rosary-saint-dominic-to-smartphone.html">
+          <div class="post-cat">Catholic History</div>
+          <h2>The History of the Rosary: From Saint Dominic to Your Smartphone</h2>
+          <p>From the medieval "Poor Man's Psalter" and Saint Dominic's vision to the Battle of Lepanto and today's prayer apps — the epic journey of the Rosary.</p>
+          <div class="post-meta"><span>June 26, 2026</span><span class="dot"></span><span>8 min read</span></div>
+          <span class="post-readmore">Read article
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== CTA STRIP ===== -->
+  <section class="cta-strip reveal">
+    <div class="footer-bg"></div>
+    <div class="footer-overlay"></div>
+    <h2>Pray the Rosary. Every day. With purpose.</h2>
+    <p>Guided audio, captions, intentions, journals, and 100 daily motivations.</p>
+    <a class="appstore-btn" href="https://apps.apple.com/us/app/prayerful-rosary/id6782238801" target="_blank" rel="noopener noreferrer" aria-label="Download Prayerful Rosary on the App Store">
+      <svg viewBox="0 0 17 21" fill="currentColor" aria-hidden="true"><path d="M14.06 11.13c-.02-2.34 1.91-3.47 2-3.53-1.09-1.6-2.79-1.82-3.4-1.85-1.45-.15-2.83.85-3.57.85-.74 0-1.88-.83-3.09-.81-1.59.02-3.05.92-3.87 2.34-1.65 2.85-.42 7.07 1.18 9.38.79 1.13 1.71 2.4 2.93 2.36 1.18-.05 1.62-.76 3.04-.76 1.42 0 1.82.76 3.07.74 1.27-.02 2.07-1.15 2.84-2.29.9-1.31 1.27-2.58 1.29-2.65-.03-.01-2.47-.95-2.49-3.78zM11.97 4.21c.66-.8 1.1-1.91 1-3.04-.97.04-2.13.64-2.81 1.44-.61.71-1.14 1.83-1 2.92 1.08.08 2.16-.55 2.81-1.32z"/></svg>
+      <span><span class="as-sub">Download on the</span><span class="as-main">App Store</span></span>
+    </a>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <img class="footer-crucifix" src="./marketing-assets/crucifix.png" alt="" loading="lazy" />
+    <div class="footer-wordmark">Prayerful Rosary</div>
+    <p class="footer-tag">Pray the Rosary. Every day. With purpose.</p>
+    <div class="footer-socials">
+      <a class="footer-social-link" href="https://youtube.com/@PRAYERFULROSARY" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+      </a>
+      <a class="footer-social-link" href="https://www.instagram.com/prayerfulrosary" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" ry="5"/><path d="M16 11.4A4 4 0 1 1 12.6 8a4 4 0 0 1 3.4 3.4z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a class="footer-social-link" href="https://www.facebook.com/prayerfulrosary" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.5 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg>
+      </a>
+    </div>
+    <div class="footer-copy">© <span id="y"></span> Prayerful Rosary. All rights reserved. &nbsp;·&nbsp; <a href="index.html">Home</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html">Terms of Use</a> &nbsp;·&nbsp; <a href="eula.html">EULA</a></div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const nav = document.getElementById('nav');
+    const hero = document.querySelector('.page-hero');
+    const onScroll = () => {
+      const threshold = hero ? hero.offsetHeight - 72 : 400;
+      nav.classList.toggle('scrolled', window.scrollY > threshold);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  </script>
+
+</body>
+</html>
