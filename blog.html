@@ -216,6 +216,66 @@
     .post-card:hover .post-readmore { gap: 13px; }
     .post-readmore svg { width: 16px; height: 16px; }
 
+    /* ---------- STATUS / EMPTY ---------- */
+    .posts-status {
+      text-align: center;
+      color: var(--secondary-label);
+      font-size: 15px;
+      padding: 40px 0;
+      margin: 0;
+    }
+    .posts-status.error { color: #9A2E2E; }
+    .posts-status[hidden] { display: none; }
+
+    /* ---------- PAGINATION ---------- */
+    .pagination {
+      margin-top: clamp(48px, 6vw, 72px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .page-arrow,
+    .page-num {
+      display: grid;
+      place-items: center;
+      min-width: 42px;
+      height: 42px;
+      padding: 0 6px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--label);
+      background: #fff;
+      box-shadow: var(--shadow-card);
+      transition: transform 200ms cubic-bezier(.2,.8,.2,1), background 200ms ease, color 200ms ease, box-shadow 200ms ease;
+    }
+    .page-arrow svg { width: 18px; height: 18px; display: block; }
+    .page-num { cursor: pointer; }
+    .page-arrow { cursor: pointer; }
+    .page-arrow:hover:not(:disabled),
+    .page-num:hover:not(.active) { transform: translateY(-2px); box-shadow: var(--shadow-deep); }
+    .page-num.active {
+      background: var(--label);
+      color: #fff;
+      cursor: default;
+    }
+    .page-arrow:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+    .page-ellipsis {
+      display: grid;
+      place-items: center;
+      min-width: 28px;
+      height: 42px;
+      color: var(--secondary-label);
+      font-weight: 600;
+    }
+
     /* ---------- CTA STRIP ---------- */
     .cta-strip {
       position: relative; text-align: center;
@@ -321,64 +381,35 @@
     </div>
   </header>
 
-  <!-- ===== POSTS ===== -->
+  <!-- ===== POSTS =====
+       Cards are rendered dynamically from posts.json (newest first, 18 per page).
+       To publish a new post: create its article .html, then add one entry to posts.json.
+       No edits to this file are needed as the blog grows. -->
   <main class="posts">
     <div class="wrap">
-      <div class="posts-grid">
+      <div class="posts-grid" id="postsGrid" aria-live="polite"></div>
 
-        <a class="post-card reveal" href="how-to-build-daily-rosary-habit-iphone.html">
-          <div class="post-cat">Prayer Habits</div>
-          <h2>How to Build a Daily Rosary Habit Using Your iPhone</h2>
-          <p>Turn your iPhone from a source of distraction into an instrument of grace. A practical guide to building a sustainable, lifelong daily Rosary habit.</p>
-          <div class="post-meta"><span>June 2, 2026</span><span class="dot"></span><span>6 min read</span></div>
-          <span class="post-readmore">Read article
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </span>
-        </a>
+      <p class="posts-status" id="postsStatus">Loading posts…</p>
 
-        <a class="post-card reveal" href="20-mysteries-of-the-rosary-explained-beginners.html">
-          <div class="post-cat">Learn the Rosary</div>
-          <h2>The 20 Mysteries of the Rosary Explained for Beginners</h2>
-          <p>The Joyful, Luminous, Sorrowful, and Glorious mysteries — what each one means, when to pray it, and how to meditate as a beginner.</p>
-          <div class="post-meta"><span>June 9, 2026</span><span class="dot"></span><span>8 min read</span></div>
-          <span class="post-readmore">Read article
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </span>
-        </a>
-
-        <a class="post-card reveal" href="why-catholics-turning-to-prayer-apps.html">
-          <div class="post-cat">Faith &amp; Technology</div>
-          <h2>Why Catholics Are Turning to Prayer Apps for Deeper Devotion</h2>
-          <p>A quiet counter-cultural movement is reclaiming our digital spaces. Here's why prayer apps have become essential to modern Catholic life.</p>
-          <div class="post-meta"><span>June 16, 2026</span><span class="dot"></span><span>6 min read</span></div>
-          <span class="post-readmore">Read article
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </span>
-        </a>
-
-        <a class="post-card reveal" href="praying-the-rosary-for-healing-healthcare-workers.html">
-          <div class="post-cat">Prayer &amp; Healing</div>
-          <h2>Praying the Rosary for Healing: A Guide for Healthcare Workers</h2>
-          <p>For nurses, physicians, and caregivers — finding spiritual renewal, fighting burnout, and interceding for patients with Mary, Health of the Sick.</p>
-          <div class="post-meta"><span>June 23, 2026</span><span class="dot"></span><span>7 min read</span></div>
-          <span class="post-readmore">Read article
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </span>
-        </a>
-
-        <a class="post-card reveal" href="history-of-the-rosary-saint-dominic-to-smartphone.html">
-          <div class="post-cat">Catholic History</div>
-          <h2>The History of the Rosary: From Saint Dominic to Your Smartphone</h2>
-          <p>From the medieval "Poor Man's Psalter" and Saint Dominic's vision to the Battle of Lepanto and today's prayer apps — the epic journey of the Rosary.</p>
-          <div class="post-meta"><span>June 26, 2026</span><span class="dot"></span><span>8 min read</span></div>
-          <span class="post-readmore">Read article
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </span>
-        </a>
-
-      </div>
+      <!-- pagination -->
+      <nav class="pagination" id="pagination" aria-label="Blog pages" hidden>
+        <button class="page-arrow" id="prevBtn" type="button" aria-label="Previous page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="page-numbers" id="pageNumbers"></div>
+        <button class="page-arrow" id="nextBtn" type="button" aria-label="Next page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </nav>
     </div>
   </main>
+
+  <noscript>
+    <p style="text-align:center;padding:24px;color:#6B6B6B;font-family:-apple-system,sans-serif;">
+      Please enable JavaScript to browse the blog, or view the full list of articles in our
+      <a href="sitemap.xml" style="color:#9A7B2E;">sitemap</a>.
+    </p>
+  </noscript>
 
   <!-- ===== CTA STRIP ===== -->
   <section class="cta-strip reveal">
@@ -413,6 +444,8 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    /* Nav: transparent over hero, solid once scrolled past. */
     const nav = document.getElementById('nav');
     const hero = document.querySelector('.page-hero');
     const onScroll = () => {
@@ -421,10 +454,156 @@
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
+
+    /* Reveal-on-scroll for static sections (CTA strip). */
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
-    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+    /* ---------------------------------------------------------------
+       Dynamic, paginated blog listing — driven entirely by posts.json.
+       Newest posts first. 18 per page (3 columns × 6 rows).
+       --------------------------------------------------------------- */
+    const PER_PAGE = 18;
+    const grid       = document.getElementById('postsGrid');
+    const statusEl   = document.getElementById('postsStatus');
+    const pager      = document.getElementById('pagination');
+    const prevBtn    = document.getElementById('prevBtn');
+    const nextBtn    = document.getElementById('nextBtn');
+    const pageNums   = document.getElementById('pageNumbers');
+
+    const ARROW_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+
+    const escapeHtml = (s) => String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
+    const formatDate = (iso) => {
+      // Parse YYYY-MM-DD as a local date to avoid timezone drift.
+      const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || '');
+      if (!m) return escapeHtml(iso || '');
+      const d = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+      return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    };
+
+    let posts = [];
+    let totalPages = 1;
+
+    const getPageFromUrl = () => {
+      const p = parseInt(new URLSearchParams(location.search).get('page'), 10);
+      return (Number.isFinite(p) && p >= 1) ? p : 1;
+    };
+
+    const cardHtml = (post) => {
+      const href     = escapeHtml(post.slug);
+      const cat      = escapeHtml(post.category || '');
+      const title    = escapeHtml(post.title || '');
+      const excerpt  = escapeHtml(post.excerpt || '');
+      const date     = formatDate(post.date);
+      const readTime = escapeHtml(post.readTime || '');
+      const metaBits = [date, readTime].filter(Boolean)
+        .map((b, i) => (i ? '<span class="dot"></span>' : '') + '<span>' + b + '</span>').join('');
+      return (
+        '<a class="post-card reveal" href="' + href + '">' +
+          (cat ? '<div class="post-cat">' + cat + '</div>' : '') +
+          '<h2>' + title + '</h2>' +
+          (excerpt ? '<p>' + excerpt + '</p>' : '') +
+          '<div class="post-meta">' + metaBits + '</div>' +
+          '<span class="post-readmore">Read article ' + ARROW_SVG + '</span>' +
+        '</a>'
+      );
+    };
+
+    const buildPager = (page) => {
+      prevBtn.disabled = page <= 1;
+      nextBtn.disabled = page >= totalPages;
+      pageNums.innerHTML = '';
+
+      // Compact window of page numbers with ellipses.
+      const add = (n) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'page-num' + (n === page ? ' active' : '');
+        b.textContent = String(n);
+        if (n !== page) b.addEventListener('click', () => goTo(n));
+        else b.setAttribute('aria-current', 'page');
+        pageNums.appendChild(b);
+      };
+      const ell = () => {
+        const s = document.createElement('span');
+        s.className = 'page-ellipsis';
+        s.textContent = '…';
+        pageNums.appendChild(s);
+      };
+
+      const win = 1; // neighbors on each side of current
+      const pagesToShow = new Set([1, totalPages, page]);
+      for (let i = page - win; i <= page + win; i++) if (i >= 1 && i <= totalPages) pagesToShow.add(i);
+      const sorted = [...pagesToShow].sort((a, b) => a - b);
+      let last = 0;
+      for (const n of sorted) {
+        if (n - last > 1) ell();
+        add(n);
+        last = n;
+      }
+    };
+
+    const render = (page, { scroll = false } = {}) => {
+      page = Math.min(Math.max(1, page), totalPages);
+      const start = (page - 1) * PER_PAGE;
+      const slice = posts.slice(start, start + PER_PAGE);
+
+      grid.innerHTML = slice.map(cardHtml).join('');
+      // animate cards in
+      grid.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+      if (totalPages > 1) {
+        pager.hidden = false;
+        buildPager(page);
+      } else {
+        pager.hidden = true;
+      }
+
+      if (scroll) {
+        const top = document.querySelector('.posts').offsetTop - 70;
+        window.scrollTo({ top: top < 0 ? 0 : top, behavior: 'smooth' });
+      }
+    };
+
+    const goTo = (page, { push = true } = {}) => {
+      page = Math.min(Math.max(1, page), totalPages);
+      if (push) {
+        const url = page === 1 ? location.pathname : location.pathname + '?page=' + page;
+        history.pushState({ page }, '', url);
+      }
+      render(page, { scroll: true });
+    };
+
+    prevBtn.addEventListener('click', () => goTo(getCurrent() - 1));
+    nextBtn.addEventListener('click', () => goTo(getCurrent() + 1));
+    const getCurrent = () => parseInt(new URLSearchParams(location.search).get('page'), 10) || 1;
+
+    window.addEventListener('popstate', () => render(getPageFromUrl()));
+
+    fetch('posts.json', { cache: 'no-cache' })
+      .then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then((data) => {
+        posts = (Array.isArray(data) ? data : [])
+          .filter((p) => p && p.slug && p.title)
+          .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+        if (!posts.length) {
+          statusEl.textContent = 'No posts yet — check back soon.';
+          return;
+        }
+        statusEl.hidden = true;
+        totalPages = Math.max(1, Math.ceil(posts.length / PER_PAGE));
+        render(getPageFromUrl());
+      })
+      .catch((err) => {
+        statusEl.className = 'posts-status error';
+        statusEl.textContent = 'Could not load posts. Please refresh the page.';
+        console.error('[blog] failed to load posts.json:', err);
+      });
   </script>
 
 </body>
