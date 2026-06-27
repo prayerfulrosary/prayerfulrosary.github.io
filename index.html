@@ -107,6 +107,16 @@
     .nav-cta:hover { transform: translateY(-1px); }
     .nav.scrolled .nav-cta { background: var(--label); color: #fff; }
 
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-link {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      opacity: 0.82;
+      transition: opacity 200ms ease;
+    }
+    .nav-link:hover { opacity: 1; }
+
     .tooltip {
       position: absolute;
       bottom: calc(100% + 8px);
@@ -801,11 +811,14 @@
             <img src="./marketing-assets/app-icon.png" alt="" />
             <span>Prayerful Rosary</span>
           </div>
-          <a class="nav-cta" href="https://apps.apple.com/us/app/prayerful-rosary/id6782238801"
-             target="_blank" rel="noopener noreferrer"
-             aria-label="Download Prayerful Rosary on the App Store">
-            Download
-          </a>
+          <div class="nav-links">
+            <a class="nav-link" href="blog.html">Blog</a>
+            <a class="nav-cta" href="https://apps.apple.com/us/app/prayerful-rosary/id6782238801"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Download Prayerful Rosary on the App Store">
+              Download
+            </a>
+          </div>
         </nav>
       `;
     };
