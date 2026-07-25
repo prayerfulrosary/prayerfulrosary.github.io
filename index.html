@@ -3,11 +3,101 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="description" content="Prayerful Rosary — pray the Rosary every day with audio, captions, intentions, journals, and 100 daily Catholic motivations." />
+  <meta name="description" content="Prayerful Rosary — pray the Rosary every day with guided audio, captions, mystery reflections, intentions, journals, and streaks. Free to start, on iPhone and Android." />
+  <meta name="keywords" content="rosary app, pray the rosary, catholic prayer app, guided rosary, mysteries of the rosary, rosary audio, daily rosary, prayer journal" />
+  <meta name="author" content="Prayerful Rosary" />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
   <meta name="google-site-verification" content="Qpwn8LbcFeFl0EdmFNdSetAYXYi0x5pR0inKVwWwGQo" />
+  <meta name="theme-color" content="#1A0F08" />
   <title>Prayerful Rosary — Pray the Rosary. Every day. With purpose.</title>
+  <link rel="canonical" href="https://prayerfulrosary.github.io/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Prayerful Rosary" />
+  <meta property="og:title" content="Prayerful Rosary — Pray the Rosary. Every day. With purpose." />
+  <meta property="og:description" content="Guided audio, captions, and mystery reflections for every bead. Track your streak, write intentions, journal your reflections. Free to start, on iPhone and Android." />
+  <meta property="og:url" content="https://prayerfulrosary.github.io/" />
+  <meta property="og:image" content="https://prayerfulrosary.github.io/marketing-assets/og-cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Prayerful Rosary — an animated rosary companion for iPhone and Android" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Prayerful Rosary — Pray the Rosary. Every day. With purpose." />
+  <meta name="twitter:description" content="Guided audio, captions, and mystery reflections for every bead. Free to start, on iPhone and Android." />
+  <meta name="twitter:image" content="https://prayerfulrosary.github.io/marketing-assets/og-cover.jpg" />
+
+  <!-- Deep links to the native apps -->
+  <meta name="apple-itunes-app" content="app-id=6782238801" />
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "MobileApplication",
+      "name": "Prayerful Rosary",
+      "applicationCategory": "LifestyleApplication",
+      "applicationSubCategory": "Religion & Spirituality",
+      "operatingSystem": "iOS, Android",
+      "description": "An animated Rosary companion with guided audio, captions, mystery reflections, prayer intentions, journaling, and streak tracking.",
+      "url": "https://prayerfulrosary.github.io/",
+      "image": "https://prayerfulrosary.github.io/marketing-assets/og-cover.jpg",
+      "screenshot": [
+        "https://prayerfulrosary.github.io/marketing-assets/screen1.png",
+        "https://prayerfulrosary.github.io/marketing-assets/screen2.png",
+        "https://prayerfulrosary.github.io/marketing-assets/screen3.png",
+        "https://prayerfulrosary.github.io/marketing-assets/screen4.png"
+      ],
+      "installUrl": [
+        "https://apps.apple.com/us/app/prayerful-rosary/id6782238801",
+        "https://play.google.com/store/apps/details?id=com.prayerfulrosary.app"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Free to download. Optional subscription unlocks the full experience."
+      },
+      "publisher": { "@id": "https://prayerfulrosary.github.io/#organization" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://prayerfulrosary.github.io/#organization",
+      "name": "Prayerful Rosary",
+      "url": "https://prayerfulrosary.github.io/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://prayerfulrosary.github.io/marketing-assets/app-icon.png",
+        "width": 1024,
+        "height": 1024
+      },
+      "sameAs": [
+        "https://youtube.com/@PRAYERFULROSARY",
+        "https://www.instagram.com/prayerfulrosary",
+        "https://www.facebook.com/prayerfulrosary"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://prayerfulrosary.github.io/#website",
+      "name": "Prayerful Rosary",
+      "url": "https://prayerfulrosary.github.io/",
+      "publisher": { "@id": "https://prayerfulrosary.github.io/#organization" }
+    }
+  ]
+  </script>
+
+  <!-- The page renders from these CDNs; connecting early cuts render-blocking latency. -->
+  <link rel="preconnect" href="https://esm.sh" crossorigin />
+  <link rel="dns-prefetch" href="https://esm.sh" />
 
   <link rel="preload" href="./marketing-assets/Cinzel-Variable.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="./marketing-assets/cathedral.jpg" as="image" fetchpriority="high" />
   <link rel="icon" type="image/png" href="./marketing-assets/app-icon.png" />
 
   <style>
@@ -770,6 +860,62 @@
 </head>
 <body>
   <div id="root"></div>
+
+  <!--
+    The page above is rendered by React from a CDN, so the served HTML has no
+    body text of its own. Crawlers that don't execute JS (Bing, social-preview
+    scrapers, AI crawlers) would otherwise see an empty page. This mirrors the
+    rendered content for them, and for anyone browsing without JS.
+    Keep in sync with SCREENS[] and the Hero copy below.
+  -->
+  <noscript>
+    <div style="max-width:720px;margin:0 auto;padding:48px 24px;font-family:Georgia,'Times New Roman',serif;color:#1C1C1E;line-height:1.6">
+      <h1 style="font-size:34px;margin:0 0 8px">Prayerful Rosary</h1>
+      <p style="font-size:19px;margin:0 0 28px"><strong>Pray the Rosary. Every day. With purpose.</strong></p>
+
+      <p>Prayerful Rosary is an animated Rosary companion for iPhone and Android. Guided
+      audio, captions, and full mystery reflections carry you through every bead, so your
+      mind never wanders.</p>
+
+      <h2 style="font-size:23px;margin:32px 0 6px">Guided Prayer, Step by Step</h2>
+      <p>Follow every bead of the Rosary with audio, captions, and full mystery reflections
+      — so your mind never wanders.</p>
+
+      <h2 style="font-size:23px;margin:32px 0 6px">Your Prayer Journey, Tracked</h2>
+      <p>Watch your streak grow. Every Rosary prayed builds a habit that saints were made of.</p>
+
+      <h2 style="font-size:23px;margin:32px 0 6px">Reflect. Intend. Record.</h2>
+      <p>Write prayer intentions and journal reflections tied to each mystery. Your spiritual
+      life, in one place.</p>
+
+      <h2 style="font-size:23px;margin:32px 0 6px">Make It Yours</h2>
+      <p>Choose your theme, your background sounds, your pace. The Rosary, the way you pray
+      it best.</p>
+
+      <h2 style="font-size:23px;margin:32px 0 6px">Get the app</h2>
+      <p>
+        <a href="https://apps.apple.com/us/app/prayerful-rosary/id6782238801">Download on the App Store</a>
+        &nbsp;·&nbsp;
+        <a href="https://play.google.com/store/apps/details?id=com.prayerfulrosary.app">Get it on Google Play</a>
+      </p>
+
+      <h2 style="font-size:23px;margin:32px 0 6px">Learn the Rosary</h2>
+      <ul>
+        <li><a href="blog.html">The Prayerful Rosary blog</a></li>
+        <li><a href="20-mysteries-of-the-rosary-explained-beginners.html">The 20 Mysteries of the Rosary explained for beginners</a></li>
+        <li><a href="how-to-build-daily-rosary-habit-iphone.html">How to build a daily Rosary habit on your iPhone</a></li>
+        <li><a href="history-of-the-rosary-saint-dominic-to-smartphone.html">History of the Rosary: from Saint Dominic to the smartphone</a></li>
+        <li><a href="luminous-mysteries-transform-your-week.html">How the Luminous Mysteries transform your week</a></li>
+      </ul>
+
+      <p style="margin-top:36px;font-size:14px;color:#6B6B6B">
+        © 2026 Prayerful Rosary ·
+        <a href="privacy.html">Privacy Policy</a> ·
+        <a href="terms.html">Terms of Use</a> ·
+        <a href="eula.html">EULA</a>
+      </p>
+    </div>
+  </noscript>
 
   <script type="importmap">
   {
